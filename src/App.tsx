@@ -1,15 +1,14 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
 import EmployeeCard from "./components/EmployeeCard ";
 
 const sampleEmployee = {
   name: {
-    first: "Charlie",
-    last: "Thompson",
+    first: "Meddie",
+    last: "Azure",
   },
-  email: "charlie.thompson@example.com",
+  email: "meddie.azure@example.com",
   picture: {
     medium: "https://randomuser.me/api/portraits/med/men/40.jpg",
   },
@@ -17,16 +16,18 @@ const sampleEmployee = {
 
 function App() {
   const [employee, setEmployee] = useState(sampleEmployee);
+
   const getEmployee = () => {
     // Send the request
-    fetch("https://randomuser.me/api?nat=en")
+    fetch("http://localhost:3312/api/employees") // changer de route fech
       .then((response) => response.json())
       .then((data) => {
-        setEmployee(data.results[0]);
+        setEmployee(data.result[0]);
       });
   };
   return (
     <div className="App">
+      <h1>{employee.email}</h1>
       <EmployeeCard employee={employee} />
       <button type="button" onClick={getEmployee}>
         Get employee

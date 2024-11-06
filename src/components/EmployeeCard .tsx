@@ -13,6 +13,7 @@ interface EmployeeCardProps {
 }
 
 function EmployeeCard({ employee }: EmployeeCardProps) {
+  console.log(employee);
   return (
     <figure className="DisplayEmployee">
       <img src={employee.picture.medium} alt={employee.name.first} />
